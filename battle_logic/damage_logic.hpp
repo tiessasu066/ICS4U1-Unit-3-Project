@@ -46,7 +46,7 @@ bool dodge_multiplier(entity defender) {
 }
 
 int total_damage_dealt(entity attacker, entity defender) {
-    int _damage = float(attacker.get_attack()) * elemental_multiplier(attacker, defender) * crit_multiplier() * dodge_multiplier(defender); //do floating point math and then floor to an integer
+    int _damage = float(attacker.get_attack()* (1 - float(defender.get_defense() / 100))) * elemental_multiplier(attacker, defender) * crit_multiplier() * dodge_multiplier(defender); //do floating point math and then floor to an integer
 
     damage_dealt_by_attacker = _damage;
     return _damage;
